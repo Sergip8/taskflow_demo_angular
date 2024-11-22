@@ -1,0 +1,71 @@
+
+@if (!loading) {
+  <div class="flex flex-wrap ">
+    @for (product of products; track $index) {
+  <a [routerLink]="['/p/'+ product.product.link]" class="max-w-[260px] rounded overflow-hidden m-1">
+      <!-- <div class="h-52" [ngStyle]="{backgroundImage: 'url(' + product.images[0].imageUrl + ')'}">
+  
+      </div> -->
+      <div class="w-full h-60" (mouseover)="changeImage = product.product.productId" (mouseleave)="changeImage = 0">
+        @if (changeImage == product.product.productId) {
+          <img  class="px-6 py-4" (error)="errorImage($index, 1)" [src]="products[$index].images[1].imageUrl">
+          
+        }@else {
+          
+          <img  class="px-6 py-4" (error)="errorImage($index, 0)" [src]="products[$index].images[0].imageUrl">
+        }
+      </div>
+      <div class="px-6 py-0">
+        <p class="text-gray-400 text-xs uppercase">
+            {{product.brand.brandName}}
+        </p>
+        <div class="font-bold text-xl mb-2">{{product.product.name}}</div>
+        <p class="text-gray-400 text-ms line-through">
+          $ {{product.price.highPrice}}
+        </p>
+        <p class="text-gray-700 text-lg ">
+          $ {{product.price.lowPrice}}
+        </p>
+      </div>
+      <div class=" pt-1 pb-2 flex">
+        <button (click)="minus(product.product.productId)" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-s-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+          <img width="20" src="../../../../assets/images/icons/minus.svg" alt="">
+        </button>
+          <button (click)="addToCart(product.product)" type="button" class="flex justify-center gap-3 w-full focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+          <span>
+            <img width="20" src="../../../../assets/images/icons/ic_shopping-cart.svg" alt="cart">
+          </span>
+          <span>Add {{count(product.product.productId)}} to cart</span>
+          </button>
+          <button (click)="plus(product.product.productId)" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-e-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+            <img width="20" src="../../../../assets/images/icons/plus.svg" alt="">
+          </button>
+      </div>
+    </a>
+      
+    }
+  </div>
+
+}@else {
+  
+  <div class="flex flex-wrap animate-pulse ">
+   
+      <div *ngFor="let i of [].constructor(20)" class=" rounded overflow-hidden m-1">
+          <div class="w-[260px]">
+
+            <div class="w-full h-60 bg-gray-200  dark:bg-gray-700  mb"></div>
+            <div class="px-6 py-0 mt-2">
+              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-12 mb-4"></div>
+              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-4"></div>
+              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-28 mb-4"></div>
+              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-28 mb-4"></div>
+            </div>
+            <div class=" pt-1 pb-2 flex">
+              <div class="h-10 bg-gray-200  dark:bg-gray-700 w-full mb-4"></div>
+            </div>
+          </div>
+        </div>
+          
+        
+  </div>
+}

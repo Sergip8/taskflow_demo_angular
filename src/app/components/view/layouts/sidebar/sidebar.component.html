@@ -1,0 +1,107 @@
+<aside>
+    <div class=" md:block hidden">
+        @if (projects.length >0) {
+            
+            <h1 class=" font-bold text-2xl">
+                {{projects[0].companyName}}
+            </h1>
+        }
+              
+      
+    </div>
+   
+    <ul class="menu-links">
+        <!-- <li>
+            <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Events)"
+                routerLinkActive="active" ariaCurrentWhenActive="page">
+                <i class="bi bi-calendar4-event"></i>
+                <span>Events</span>
+            </a>
+        </li> -->
+        <li>
+            <a  href="javascript:void(0)" class=" menu-item sub-menu" aria-expanded="false"
+                (click)="subMenuToggleHandler($event, 'projects')">
+                
+                    <svg class="dark:fill-slate-100" width="22" height="23px"  xmlns="http://www.w3.org/2000/svg">
+                        <path [attr.transform]="rotateArrow.includes('registers') ? 'rotate(90 10 10)' : ''" d="M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
+                       </svg>
+
+               
+
+                
+                <span>projects</span>
+            </a>
+            <ul class="sub-menu-item">
+                @if (projects.length >0) {
+                    <li *ngFor="let p of projects">
+                        <a class="menu-item"
+                            [routerLink]="commonServices.prepareRoute(appRoutes.Dashboard, appRoutes.Project, p.name.toLowerCase().replace(' ', ''), p.id)"
+                            routerLinkActive="active" ariaCurrentWhenActive="page">
+                            <span>{{p.name}}</span>
+                        </a>
+                    </li>
+
+                }@else {
+                    <li>
+                        No hay projectos
+                    </li>
+                }
+             
+            </ul>
+        </li>
+        <li>
+            <a 
+             [routerLink]="commonServices.prepareRoute(appRoutes.Dashboard, appRoutes.Project, adminRoutes.Tickets)"
+            class="menu-item sub-menu" aria-expanded="false"
+            (click)="subMenuToggleHandler($event, 'settings')">
+            <svg class="dark:fill-slate-100" width="19" height="23px"  xmlns="http://www.w3.org/2000/svg">
+                <path [attr.transform]="rotateArrow.includes('settings') ? 'rotate(90 10 10)' : ''" d="M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
+               </svg>
+            <span>Tickets</span>
+        </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false"
+                (click)="subMenuToggleHandler($event, 'settings')">
+                <svg class="dark:fill-slate-100" width="19" height="23px"  xmlns="http://www.w3.org/2000/svg">
+                    <path [attr.transform]="rotateArrow.includes('settings') ? 'rotate(90 10 10)' : ''" d="M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
+                   </svg>
+                <span>Settings</span>
+            </a>
+            <ul class="sub-menu-item">
+                <li>
+                    <a class="menu-item"
+                        [routerLink]="commonServices.prepareRoute(appRoutes.Project, adminRoutes.Settings, settingRoutes.Profile)"
+                        routerLinkActive="active" ariaCurrentWhenActive="page">
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-item"
+                        [routerLink]="commonServices.prepareRoute(appRoutes.Project, adminRoutes.Settings, settingRoutes.Users)"
+                        routerLinkActive="active" ariaCurrentWhenActive="page">
+                        <span>Users</span>
+                    </a>
+                </li>
+               
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="menu-item">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    </ul>
+</aside>
+
+<div class="collapsible-btn-container md:block hidden">
+    <button id="sidebar-collapse-btn" sidebarCollapse>
+        <div class="w-6 h-16 flex justify-center items-center">
+            <div class="collapsible-icons">
+                <div class="collapsible-top-icon"></div>
+                <div class="collapsible-bottom-icon"></div>
+            </div>
+        </div>
+    </button>
+</div>

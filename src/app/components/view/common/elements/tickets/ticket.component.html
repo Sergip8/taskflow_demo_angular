@@ -1,0 +1,81 @@
+<div class="mx-10 2xl:w-3/4">
+    <h2 class=" text-2xl mb-3">Tickets</h2>
+    <div class="flex justify-between items-center">
+        <div>
+            <div class="flex ">
+                <div class="flex items-center me-4">
+                    <input checked id="inline-radio" (change)="getStatus($event)" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Todos</label>
+                </div>
+                    @for (status of stautsList; track $index) {
+                    <div class="flex items-center me-4">
+                        <input id="inline-radio" (change)="getStatus($event)" type="radio" [value]="status" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{status}}</label>
+                    </div>
+                }
+                  
+                </div>
+    
+        </div>
+        <app-select [data]="sortSelect" (selected)="orderSelected($event)"></app-select>
+    </div>
+    
+    @if (tickets) {
+       
+         <div class="">
+             
+             <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                <li class="py-3 sm:py-4">
+                    <div class="flex items-center justify-between">
+                        
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                               Titulo
+                            </p>
+                           
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                               Descripcion
+                            </p>
+                           
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                               Estatus
+                            </p>
+                           
+                        </div>
+                        
+                    </div>
+                </li>
+                 @for (item of tickets; track $index) {
+                 <li class="py-3 sm:py-4">
+                     <div class="flex items-center space-x-4">
+                         
+                         <div class="flex-1 min-w-0">
+                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                {{item.title}}
+                             </p>
+                            
+                         </div>
+                         <div class="flex-1 min-w-0">
+                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                {{item.description}}
+                             </p>
+                            
+                         </div>
+                         <div  [ngClass]="{'bg-emerald-50': item.status == 'Activo', 'bg-orange-50': item.status == 'En Proceso', 'bg-red-50': item.status == 'Finalizado'}" class="py-1.5 px-2.5 rounded-full flex justify-center w-30 items-center gap-1">
+                            <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle [ngClass]="{' fill-emerald-500': item.status == 'Activo', 'fill-orange-500': item.status == 'En Proceso', 'fill-red-300': item.status == 'Finalizado'}" cx="2.5" cy="3" r="2.5" ></circle>
+                            </svg>
+                            <span [ngClass]="{'text-emerald-600': item.status == 'Activo', 'text-orange-600': item.status == 'En Proceso', 'text-red-600': item.status == 'Finalizado'}" class="font-medium text-xs  ">{{item.status}}</span>
+                        </div>
+                     </div>
+                 </li>
+                }
+               </ul>
+          </div>
+          <app-pagination [pageData]="pagination" (pageChange)="gotoPage($event)"></app-pagination>
+    }
+</div>

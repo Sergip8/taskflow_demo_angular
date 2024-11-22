@@ -1,0 +1,40 @@
+<header class="bg-slate-50 dark:bg-slate-600 shadow fixed top-0 w-full z-50 h-18">
+   <nav class="flex items-center justify-between gap-4 px-6 py-4 lg:px-42 px-42" aria-label="Global">
+      <div class="flex lg:flex-1 gap-10">
+         <a href="#" class="-m-1.5 p-1.5">
+            <span class="">Your Company</span>
+            <!-- <img class="h-8 w-auto" src={{mainLogo}} alt=""> -->
+         </a>
+         @if (showDashboard) {
+            
+            <div class="flex lg:hidden">
+               <button type="button" class="navbar-toggler">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                     aria-hidden="true">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  </svg>
+               </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+               <!-- <a [routerLink]="commonService.prepareRoute(publicRoutes.Home)"
+                  class="text-sm font-semibold leading-6 text-gray-900">Home</a> -->
+               <a [routerLink]="commonService.prepareRoute(appRoutes.Dashboard)"
+                  class="dark:text-gray-100  text-sm font-semibold leading-6 text-gray-900">Dashboard</a>
+            </div>
+         }
+      </div>
+      
+      <div class="lg:flex lg:flex-1 lg:justify-end">
+
+         <a [routerLink]="commonService.prepareRoute(publicRoutes.Signup)"
+            class="dark:text-gray-100  text-sm font-semibold leading-6 text-gray-900 mr-4">Signup</a>
+         <a [routerLink]="commonService.prepareRoute(publicRoutes.Signin)"
+            class="dark:text-gray-100  text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+      </div>
+     
+      
+   </nav>
+
+  
+</header>

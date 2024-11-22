@@ -1,27 +1,29 @@
 # AngularTaskflow
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+- Projecto de prueba para FusePong
 
-## Development server
+pagina web:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+http://taskflow-test8.s3-website-us-east-1.amazonaws.com/
 
-## Code scaffolding
+## Descripción
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Aplicación que permite crear un usuario vinculandolo a una compañia, permite loguearse a ese usuario y entrar al dashboard.
 
-## Build
+En el dasboard en el sidebar, al entrar a Tickets permite ver una lista de Tickets la cual se puede ordenar por fecha de creacion ademas de filtrar por su estado 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+al dar click en el item de proyectos permite ver los diferentes proyectos de la compañia, estos permiten acceder a una tabla con las diferentes historias de usuario del proyecto.
 
-## Running unit tests
+En la tabla de historias de usuario, al dar click en un item permite ver los tickets asociados a esta, el usuario puede editar y crear tanto historias de usuario como tickets, puede cambiar el estado del ticket y borrarlo de ser necesario
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+En terminos de seguridad utiliza una autenticacion basica con jwt y roles, los roles no se estan utilizando para facilitar las pruebas, al expirar el token envia al usuario a la pagina de login para que entre nuevamente
 
-## Running end-to-end tests
+## Tecnologias
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Las tecnologias utilizadas son:
 
-## Further help
+- En la parte de Frontend se utilizo Typescript Angular junto con tailwind
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Para el Backend se utilizo Java springboot y como database MongoDb
+
+- para el despliegue se monto el backend en un ec2, para la DB se utilizo Mongo Atlas, y por el lado del frontend se almaceno en un S3 como web estatica
