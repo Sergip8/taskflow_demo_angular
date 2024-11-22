@@ -14,6 +14,8 @@ https://github.com/Sergip8/taskflow_demo
 
 Aplicación que permite crear un usuario vinculandolo a una compañia, permite loguearse a ese usuario y entrar al dashboard.
 
+Primero se debe crear un usuario, ya creado loguearse, con esto aparece un link para entrar al dashboard en el header
+
 En el dasboard en el sidebar, al entrar a Tickets permite ver una lista de Tickets la cual se puede ordenar por fecha de creacion ademas de filtrar por su estado 
 
 al dar click en el item de proyectos permite ver los diferentes proyectos de la compañia, estos permiten acceder a una tabla con las diferentes historias de usuario del proyecto.
