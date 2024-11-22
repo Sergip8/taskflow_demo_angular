@@ -6,6 +6,10 @@ pagina web:
 
 http://taskflow-test8.s3-website-us-east-1.amazonaws.com/
 
+BackEnd:
+
+https://github.com/Sergip8/taskflow_demo
+
 ## Descripción
 
 Aplicación que permite crear un usuario vinculandolo a una compañia, permite loguearse a ese usuario y entrar al dashboard.
@@ -16,7 +20,7 @@ al dar click en el item de proyectos permite ver los diferentes proyectos de la 
 
 En la tabla de historias de usuario, al dar click en un item permite ver los tickets asociados a esta, el usuario puede editar y crear tanto historias de usuario como tickets, puede cambiar el estado del ticket y borrarlo de ser necesario
 
-En terminos de seguridad utiliza una autenticacion basica con jwt y roles, los roles no se estan utilizando para facilitar las pruebas, al expirar el token envia al usuario a la pagina de login para que entre nuevamente
+En terminos de seguridad utiliza una autenticacion basica con jwt y roles, los roles no se estan utilizando para facilitar las pruebas
 
 ## Tecnologias
 

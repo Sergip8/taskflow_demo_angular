@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { PublicRoutes } from '../../public.routes';
@@ -21,6 +21,7 @@ export class PublicHeaderComponent implements OnInit {
 
   showDashboard = false
   cart: number = 0 
+  @Input() showDashboardLink: boolean = false
   private router = inject(Router)
   public mainLogo: string = Images.mainLogo;
   readonly publicRoutes = PublicRoutes;
@@ -30,9 +31,15 @@ export class PublicHeaderComponent implements OnInit {
   constructor( public readonly commonService: CommonService, public authService: AuthService) {
 
   }
+
   async ngOnInit() {
     this.token = this.authService.getToken()
-    this.showDashboard = this.token != null
+    if(this.token != null){
+      const epochDate = Date.now() / 1000
+      const expDate = this.authService.getTokenDate()
+      if(expDate> epochDate)
+        this.showDashboard = true
+    }
   }
 
   search(value: string){
